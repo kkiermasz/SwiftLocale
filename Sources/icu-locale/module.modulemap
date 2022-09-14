@@ -1,0 +1,5 @@
+module SwiftICU {
+  header "umbrella.h"
+  link "icucore"
+  export *
+}
