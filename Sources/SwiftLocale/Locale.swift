@@ -60,3 +60,18 @@ public struct Locale {
     }
 
 }
+
+extension Locale {
+
+    public static var available: [Locale] {
+        let count = uloc_countAvailable()
+        var result = [Locale]()
+        for n in 0 ..< count {
+            let localeIdentifier = uloc_getAvailable(n)
+            guard let localeIdentifier, let locale = try? Locale(identifier: String(cString: localeIdentifier)) else { break }
+            result.append(locale)
+        }
+        return result
+    }
+
+}
