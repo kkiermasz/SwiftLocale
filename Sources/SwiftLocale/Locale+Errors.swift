@@ -8,3 +8,13 @@ extension Locale {
     }
 
 }
+
+extension Locale {
+
+    enum AcceptedLanguageNegotiationError: Error {
+        case internalICUError(code: UErrorCode)
+        case invalidICUResult
+        case invalidInput
+    }
+
+}
