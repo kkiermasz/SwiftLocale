@@ -23,6 +23,15 @@ extension Locale {
 
         let avaialableLocales = uenum_openCharStringsEnumeration(&cargs, Int32(available.count), error)
 
+
+        defer {
+            error.deallocate()
+            result?.deallocate()
+            acceptResult.deallocate()
+            httpAcceptLanguage?.deallocate()
+            cargs.forEach { $0?.deallocate() }
+        }
+
         guard error.pointee.rawValue <= 0, let httpAcceptLanguage else {
             assertionFailure(String(describing: AcceptedLanguageNegotiationError.invalidInput))
             return nil

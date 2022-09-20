@@ -10,12 +10,6 @@ let package = Package(
         targets: ["SwiftLocale"]
     ),
   ],
-  dependencies: [
-    .package(
-        url: "https://github.com/Quick/Nimble.git",
-        from: "10.0.0"
-    )
-  ],
   targets: [
     .target(
         name: "SwiftLocale",
@@ -27,7 +21,6 @@ let package = Package(
         name: "SwiftLocaleTests",
         dependencies: [
             "SwiftLocale",
-            "Nimble"
         ]
     ),
     .systemLibrary(

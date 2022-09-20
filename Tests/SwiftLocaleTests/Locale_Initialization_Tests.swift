@@ -1,6 +1,4 @@
 @testable import SwiftLocale
-
-import Nimble
 import XCTest
 
 final class Locale_Initialization_Tests: XCTestCase {
@@ -23,10 +21,10 @@ final class Locale_Initialization_Tests: XCTestCase {
         for data in testsData {
             let locale = try SwiftLocale.Locale(data.identifier)
 
-            expect(locale.identifier).to(equal(data.identifier))
-            expect(locale.language).to(equal(data.language))
-            expect(locale.script).to(equal(data.script))
-            expect(locale.region).to(equal(data.region))
+            XCTAssertEqual(locale.identifier, data.identifier)
+            XCTAssertEqual(locale.language, data.language)
+            XCTAssertEqual(locale.script, data.script)
+            XCTAssertEqual(locale.region, data.region)
         }
     }
 
