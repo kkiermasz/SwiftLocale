@@ -4,7 +4,7 @@ import Glibc
 import Darwin
 #endif
 
-import SwiftICU
+@_implementationOnly import SwiftICU
 
 public struct Locale: Hashable, Encodable {
 
