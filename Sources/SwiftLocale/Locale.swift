@@ -55,7 +55,7 @@ public struct Locale: Hashable, Encodable {
             throw InitializationError.emptyResult
         } else {
             let functionDescription = String(describing: type(of: function))
-            throw InitializationError.valueCallFailure(whileUsing: functionDescription, errorCode: error.pointee, status: Int(resultCode))
+            throw InitializationError.valueCallFailure(whileUsing: functionDescription, errorCode: Int(error.pointee.rawValue), status: Int(resultCode))
         }
     }
 
