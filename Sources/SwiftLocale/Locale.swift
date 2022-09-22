@@ -6,7 +6,7 @@ import Darwin
 
 @_implementationOnly import SwiftICU
 
-public struct Locale: Hashable, Encodable {
+public struct Locale: Hashable {
 
     // MARK: - Properties
 

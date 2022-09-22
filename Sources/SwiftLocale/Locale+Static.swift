@@ -8,11 +8,15 @@ import Darwin
 
 extension Locale {
 
-    /// Provides functions to negotiate the best locale to use. For example, a browser sends the web server the HTTP `Accept-Language` header indicating which locales, with a ranking, are acceptable to the user. The server must determine which locale to use when returning content to the user.
+    /// Provides functions to negotiate the best locale to use.
+    /// For example, a browser sends the web server the HTTP `Accept-Language` header indicating which locales, with a ranking, are acceptable to the user.
+    /// The server must determine which locale to use when returning content to the user.
     /// - Parameters:
     ///   - acceptLanguageHeader: HTTP's `Accept-Language:` header
     ///   - available: The list of `Locale`s that will be accepted in the negotiation process. If not specifier - all `Locale`s will be accepted
-    ///   - allowFallback: Tells whether to seek for a fallback in negotiation process. For example, the `Accept-Language` list includes `ja_JP` and is matched with available locale `ja`, when no `ja_JP` included in `available` list
+    ///   - allowFallback: Tells whether to seek for a fallback in negotiation process.
+    ///                    For example, the `Accept-Language` list includes `ja_JP` and is matched with available locale `ja`,
+    ///                    when no `ja_JP` included in `available` list
     /// - Returns: Locale negotiation result
     public static func acceptLanguage(_ acceptLanguageHeader: String, available: [Locale]? = nil, allowFallback: Bool = true) -> Locale? {
         let result = strdup("")
