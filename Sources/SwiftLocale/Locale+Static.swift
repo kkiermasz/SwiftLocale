@@ -5,6 +5,7 @@ import Darwin
 #endif
 
 @_implementationOnly import SwiftICU
+import Logging
 
 extension Locale {
 
@@ -43,7 +44,8 @@ extension Locale {
         }
 
         guard error.pointee.rawValue <= 0, let httpAcceptLanguage else {
-            assertionFailure(String(describing: AcceptedLanguageNegotiationError.invalidInput))
+            let reason = String(describing: AcceptedLanguageNegotiationError.invalidInput)
+            logger.info("Locale negotiation ended with failure: \(reason)")
             return nil
         }
 
@@ -52,11 +54,13 @@ extension Locale {
         uloc_acceptLanguageFromHTTP(result, 1000, acceptResult, httpAcceptLanguage, avaialableLocales, error)
 
         guard error.pointee.rawValue <= 0 else {
-            assertionFailure(String(describing: AcceptedLanguageNegotiationError.internalICUError(code: Int(error.pointee.rawValue))))
+            let reason = String(describing: AcceptedLanguageNegotiationError.internalICUError(code: Int(error.pointee.rawValue)))
+            logger.info("Locale negotiation ended with failure: \(reason)")
             return nil
         }
         guard let result, let locale = try? Locale(String(cString: result)) else {
-            assertionFailure(String(describing: AcceptedLanguageNegotiationError.invalidICUResult))
+            let reason = String(describing: AcceptedLanguageNegotiationError.invalidICUResult)
+            logger.info("Locale negotiation ended with failure: \(reason)")
             return nil
         }
         switch acceptResult.pointee {

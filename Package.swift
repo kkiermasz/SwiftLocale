@@ -10,11 +10,15 @@ let package = Package(
         targets: ["SwiftLocale"]
     ),
   ],
+  dependencies: [
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.4")
+  ],
   targets: [
     .target(
         name: "SwiftLocale",
         dependencies: [
-            "icu-locale"
+            "icu-locale",
+            .product(name: "Logging", package: "swift-log")
         ]
     ),
     .testTarget(

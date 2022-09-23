@@ -5,11 +5,13 @@ import Darwin
 #endif
 
 @_implementationOnly import SwiftICU
+import Logging
 
 public struct Locale: Hashable {
 
     // MARK: - Properties
 
+    public static var logger = Logger(label: "locale.logger")
     public let identifier: String
     
     public var language: String
