@@ -4,7 +4,7 @@ import Glibc
 import Darwin
 #endif
 
-@_implementationOnly import SwiftICU
+import FoundationICU
 import Logging
 
 public struct Locale: Hashable {

@@ -11,14 +11,15 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.4")
+    .package(url: "https://github.com/apple/swift-foundation-icu", from: "0.0.5"),
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.4.4"),
   ],
   targets: [
     .target(
         name: "SwiftLocale",
         dependencies: [
-            "icu-locale",
-            .product(name: "Logging", package: "swift-log")
+            .product(name: "FoundationICU", package: "swift-foundation-icu"),
+            .product(name: "Logging", package: "swift-log"),
         ]
     ),
     .testTarget(
@@ -27,12 +28,5 @@ let package = Package(
             "SwiftLocale",
         ]
     ),
-    .systemLibrary(
-        name: "icu-locale",
-        pkgConfig: "icu-uc",
-        providers: [
-            .brew(["icu4c"])
-        ]
-    )
   ]
 )
