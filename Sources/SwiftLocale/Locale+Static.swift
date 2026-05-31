@@ -4,7 +4,7 @@ import Glibc
 import Darwin
 #endif
 
-import FoundationICU
+import _FoundationICU
 import Logging
 
 extension Locale {

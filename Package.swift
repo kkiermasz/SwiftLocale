@@ -18,7 +18,7 @@ let package = Package(
     .target(
         name: "SwiftLocale",
         dependencies: [
-            .product(name: "FoundationICU", package: "swift-foundation-icu"),
+            .product(name: "_FoundationICU", package: "swift-foundation-icu"),
             .product(name: "Logging", package: "swift-log"),
         ]
     ),
